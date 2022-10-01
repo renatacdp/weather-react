@@ -1,7 +1,7 @@
 .SearchForm {
   display: flex;
   padding: 0px 110px;
-  margin-top: 40px;
+  margin-top: 40px auto;
   margin-bottom: 30px;
 }
 

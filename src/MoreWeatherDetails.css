@@ -1,0 +1,33 @@
+Col {
+  text-align: center;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif, "Times New Roman", Times, serif;
+}
+
+.RealFeel,
+.Wind,
+.Humidity,
+.ChanceOfRain,
+.Sunrise,
+.Sunset {
+  text-align: center;
+  font-weight: bold;
+}
+
+.RealFeelRealTime,
+.WindRealTime,
+.HumidityRealTime,
+.ChanceOfRainRealTime,
+.SunriseRealTime,
+.SunsetRealTime {
+  text-align: center;
+}
+
+.MoreWeatherDetails {
+  font-family: "Poppins", sans-serif, "Times New Roman", Times, serif;
+}
+
+.SunriseSunset {
+  padding: 0px 50px;
+  margin-bottom: 0px;
+}

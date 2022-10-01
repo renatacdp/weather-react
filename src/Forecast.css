@@ -1,0 +1,13 @@
+.ForecastWeek {
+  display: flex;
+  flex-wrap: row nowrap;
+  justify-content: space-evenly;
+  align-items: baseline;
+  font-family: "Poppins", sans-serif, "Times New Roman", Times, serif;
+  text-align: center;
+}
+
+.ForecastWeather {
+  max-width: 60%;
+  color: #592e83;
+}

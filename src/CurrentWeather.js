@@ -1,48 +1,96 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CurrentWeather.css";
 
-export default function CurrentWeather() {
-  let currentWeather = {
-    details: "Clear sky",
-    image: "http://openweathermap.org/img/wn/02d@2x.png",
-    celsiusTemperature: 30,
-    currentMaxTemperature: 32,
-    currentMinTemperature: 20,
-  };
+export default function CurrentWeather(props) {
+  const [unit, setUnit] = useState("metric");
 
-  return (
-    <div className="CurrentWeather">
-      <div>
-        <img src={currentWeather.image} alt="" className="CurrentWeatherIcon" />
-      </div>
+  function displayCelsius(event) {
+    event.preventDefault();
+    setUnit("metric");
+  }
 
-      <span className="CurrentWeatherDetails">
-        <p className="SkyDetails">{currentWeather.details}</p>
-        <div className="CurrentTemperatureBlock">
-          <span className="CurrentTemperature">
-            {currentWeather.celsiusTemperature}
-          </span>
-          <span className="CelsiusFahrenheitBlock">
-            <a href="./" className="Celsius, Active">
-              ºC
-            </a>{" "}
-            |
-            <a href="./" className="Fahrenheit">
-              ºF
-            </a>
-          </span>
+  function displayFahrenheit(event) {
+    event.preventDefault();
+    setUnit("fahrenheit");
+  }
+
+  if (unit === "metric") {
+    return (
+      <div className="CurrentWeather">
+        <div>
+          <img src={props.data.icon} alt="" className="CurrentWeatherIcon" />
         </div>
-        <p className="CurrentMaxMinTemp">
-          ↑{" "}
-          <span className="CurrentMaxTemp">
-            {currentWeather.currentMaxTemperature}º
-          </span>{" "}
-          ↓
-          <span className="CurrentMinTemp">
-            {currentWeather.currentMinTemperature}º
+        <div className="CurrentWeatherDetails">
+          <span className="SkyDetails">
+            <p>{props.data.description}</p>
           </span>
-        </p>
-      </span>
-    </div>
-  );
+          <div className="CurrentTemperatureBlock">
+            <span className="CurrentTemperature">
+              {props.data.celsiusTemperature}
+            </span>
+            <span className="CelsiusFahrenheitBlock">
+              <a href="./" className="Celsius, Active">
+                ºC
+              </a>{" "}
+              |
+              <a href="./" className="Fahrenheit" onClick={displayFahrenheit}>
+                ºF
+              </a>
+            </span>
+          </div>
+          <p className="CurrentMaxMinTemp">
+            ↑{" "}
+            <span className="CurrentMaxTemp">
+              {props.data.currentMaxTemperatureCelsius}º
+            </span>{" "}
+            ↓
+            <span className="CurrentMinTemp">
+              {props.data.currentMinTemperatureCelsius}º
+            </span>
+          </p>
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="CurrentWeather">
+        <div>
+          <img src={props.data.icon} alt="" className="CurrentWeatherIcon" />
+        </div>
+        <div className="CurrentWeatherDetails">
+          <span className="SkyDetails">
+            <p>{props.data.description}</p>
+          </span>
+          <div className="CurrentTemperatureBlock">
+            <span className="CurrentTemperature">
+              {props.data.fahrenheitTemperature}
+            </span>
+            <span className="CelsiusFahrenheitBlock">
+              <a href="./" className="Celsius">
+                ºC
+              </a>{" "}
+              |
+              <a
+                href="./"
+                className="Fahrenheit, Active"
+                onClick={displayCelsius}
+              >
+                ºF
+              </a>
+            </span>
+          </div>
+          <p className="CurrentMaxMinTemp">
+            ↑{" "}
+            <span className="CurrentMaxTemp">
+              {props.data.currentMaxTemperatureFahrenheit}º
+            </span>{" "}
+            ↓
+            <span className="CurrentMinTemp">
+              {props.data.currentMinTemperatureFahrenheit}º
+            </span>
+          </p>
+        </div>
+      </div>
+    );
+  }
 }

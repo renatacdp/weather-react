@@ -2,17 +2,38 @@ import React from "react";
 import "./MoreWeatherDetails.css";
 import { Container, Row, Col } from "react-bootstrap";
 
-export default function MoreWeatherDetails() {
-  let moreWeatherDetails = {
-    realfeel: 28,
-    wind: 23,
-    humitidy: 77,
-    rain: 10,
-    sunriseHours: 6,
-    sunriseMinutes: 46,
-    sunsetHours: 20,
-    sunsetMinutes: 37,
-  };
+export default function MoreWeatherDetails(props) {
+  function SunriseTime() {
+    let hours = props.data.sunriseTime.getHours();
+    if (hours < 10) {
+      hours = `0${hours}`;
+    }
+    let minutes = props.data.sunriseTime.getMinutes();
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
+    return (
+      <div>
+        {hours}h{minutes}
+      </div>
+    );
+  }
+
+  function SunsetTime() {
+    let hours = props.data.sunsetTime.getHours();
+    if (hours < 10) {
+      hours = `0${hours}`;
+    }
+    let minutes = props.data.sunsetTime.getMinutes();
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
+    return (
+      <div>
+        {hours}h{minutes}
+      </div>
+    );
+  }
 
   return (
     <Container>
@@ -25,7 +46,7 @@ export default function MoreWeatherDetails() {
               </span>
               ️ RealFeel©
             </p>
-            <p className="RealFeelRealTime">{moreWeatherDetails.realfeel}º</p>
+            <p className="RealFeelRealTime">{props.data.realfeel}º</p>
           </Col>
         </Row>
 
@@ -37,7 +58,7 @@ export default function MoreWeatherDetails() {
               </span>{" "}
               Wind
             </p>
-            <p className="WindRealTime">{moreWeatherDetails.wind} km/h</p>
+            <p className="WindRealTime">{props.data.wind} km/h</p>
           </Col>
 
           <Col className="HumidityColumn">
@@ -47,7 +68,7 @@ export default function MoreWeatherDetails() {
               </span>{" "}
               Humidity
             </p>
-            <p className="HumidityRealTime">{moreWeatherDetails.humitidy}%</p>
+            <p className="HumidityRealTime">{props.data.humitidy}%</p>
           </Col>
 
           <Col className="ChanceOfRainColumn">
@@ -57,7 +78,7 @@ export default function MoreWeatherDetails() {
               </span>{" "}
               % of rain
             </p>
-            <p className="ChanceOfRainRealTime">{moreWeatherDetails.rain}%</p>
+            <p className="ChanceOfRainRealTime">{props.data.rain}%</p>
           </Col>
         </Row>
 
@@ -70,8 +91,7 @@ export default function MoreWeatherDetails() {
               Sunrise
             </p>
             <p className="SunriseRealTime">
-              {moreWeatherDetails.sunriseHours}h
-              {moreWeatherDetails.sunriseMinutes}
+              {SunriseTime(props.data.sunriseTime)}
             </p>
           </Col>
           <Col className="Col-6">
@@ -82,8 +102,7 @@ export default function MoreWeatherDetails() {
               Sunset
             </p>
             <p className="SunsetRealTime">
-              {moreWeatherDetails.sunsetHours}h
-              {moreWeatherDetails.sunsetMinutes}
+              {SunsetTime(props.data.sunsetTime)}
             </p>
           </Col>
         </Row>

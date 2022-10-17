@@ -12,8 +12,19 @@ h1 {
   text-align: center;
   font-family: "Poppins", sans-serif, "Times New Roman", Times, serif;
   color: #592e83;
+  margin-bottom: 20px;
 }
 
 hr {
   color: #000;
+}
+
+.GithubLink {
+  text-align: center;
+  background-color: #dcbfe1;
+  max-width: 600px;
+  flex-direction: column;
+  padding: 20px;
+  margin: -0 auto;
+  font-size: smaller;
 }

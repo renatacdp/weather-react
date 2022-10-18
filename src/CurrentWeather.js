@@ -29,7 +29,7 @@ export default function CurrentWeather(props) {
               {props.data.celsiusTemperature}
             </span>
             <span className="CelsiusFahrenheitBlock">
-              <a href="./" className="Celsius, Active">
+              <a href="./" className="Celsius, Active" onClick={displayCelsius}>
                 ºC
               </a>{" "}
               |
@@ -66,7 +66,7 @@ export default function CurrentWeather(props) {
               {props.data.fahrenheitTemperature}
             </span>
             <span className="CelsiusFahrenheitBlock">
-              <a href="./" className="Celsius">
+              <a href="./" className="Celsius" onClick={displayCelsius}>
                 ºC
               </a>{" "}
               |

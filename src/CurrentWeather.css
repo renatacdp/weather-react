@@ -35,6 +35,7 @@
 }
 
 .CelsiusFahrenheitBlock {
+  display: flex;
   font-size: 16px;
   font-weight: bold;
   color: #592e83;

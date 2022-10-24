@@ -10,7 +10,7 @@ export default function Forecast() {
   };
 
   return (
-    <div className="ForecastWeek">
+    <div className="Forecast">
       <div>
         <h4>{Forecast.weekday[0]}</h4>
         <img src={Forecast.image} alt=" " className="ForecastWeather" />

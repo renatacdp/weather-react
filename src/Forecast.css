@@ -1,4 +1,4 @@
-.ForecastWeek {
+.Forecast {
   display: flex;
   flex-wrap: row nowrap;
   justify-content: space-evenly;

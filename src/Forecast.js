@@ -12,7 +12,6 @@ export default function Forecast(props) {
   }, [props.coordinates]);
 
   function handleResponse(response) {
-    console.log(response.data);
     setLoaded(true);
     setForecast(response.data.daily);
   }
@@ -28,6 +27,7 @@ export default function Forecast(props) {
               </div>
             );
           }
+          return null;
         })}
       </div>
     );

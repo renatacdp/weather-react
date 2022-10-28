@@ -21,6 +21,7 @@ export default function WeatherApp(props) {
       date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
       city: response.data.name,
+      coordinates: response.data.coord,
       celsiusTemperature: Math.round(response.data.main.temp),
       fahrenheitTemperature: Math.round((response.data.main.temp * 9) / 5 + 32),
       currentMaxTemperatureCelsius: Math.round(response.data.main.temp_max),
@@ -105,7 +106,7 @@ export default function WeatherApp(props) {
         </div>
         <CurrentWeather data={weatherData} />
         <hr />
-        <Forecast data={weatherData} />
+        <Forecast coordinates={weatherData.coordinates} />
         <hr />
         <MoreWeatherDetails data={weatherData} />
       </div>

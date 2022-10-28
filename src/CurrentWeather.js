@@ -22,7 +22,7 @@ export default function CurrentWeather(props) {
         </div>
         <div className="CurrentWeatherDetails">
           <span className="SkyDetails">
-            <p>{props.data.description}</p>
+            <span>{props.data.description}</span>
           </span>
           <div className="CurrentTemperatureBlock">
             <span className="CurrentTemperature">
@@ -38,7 +38,7 @@ export default function CurrentWeather(props) {
               </a>
             </span>
           </div>
-          <p className="CurrentMaxMinTemp">
+          <div className="CurrentMaxMinTemp">
             ↑{" "}
             <span className="CurrentMaxTemp">
               {props.data.currentMaxTemperatureCelsius}º
@@ -47,7 +47,7 @@ export default function CurrentWeather(props) {
             <span className="CurrentMinTemp">
               {props.data.currentMinTemperatureCelsius}º
             </span>
-          </p>
+          </div>
         </div>
       </div>
     );
@@ -59,7 +59,7 @@ export default function CurrentWeather(props) {
         </div>
         <div className="CurrentWeatherDetails">
           <span className="SkyDetails">
-            <p>{props.data.description}</p>
+            <span>{props.data.description}</span>
           </span>
           <div className="CurrentTemperatureBlock">
             <span className="CurrentTemperature">
@@ -79,7 +79,7 @@ export default function CurrentWeather(props) {
               </a>
             </span>
           </div>
-          <p className="CurrentMaxMinTemp">
+          <div className="CurrentMaxMinTemp">
             ↑{" "}
             <span className="CurrentMaxTemp">
               {props.data.currentMaxTemperatureFahrenheit}º
@@ -88,7 +88,7 @@ export default function CurrentWeather(props) {
             <span className="CurrentMinTemp">
               {props.data.currentMinTemperatureFahrenheit}º
             </span>
-          </p>
+          </div>
         </div>
       </div>
     );

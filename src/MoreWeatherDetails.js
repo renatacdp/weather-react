@@ -40,70 +40,70 @@ export default function MoreWeatherDetails(props) {
       <div className="MoreWeatherDetails">
         <Row className="RealFeelRow">
           <Col className="RealFeelColumn">
-            <p className="RealFeel">
+            <div className="RealFeel">
               <span role="img" aria-label="thermometer">
                 🌡️
               </span>
               ️ RealFeel©
-            </p>
-            <p className="RealFeelRealTime">{props.data.realfeel}º</p>
+            </div>
+            <div className="RealFeelRealTime">{props.data.realfeel}º</div>
           </Col>
         </Row>
 
         <Row className="WindHumidityRain">
           <Col className="WindColumn">
-            <p className="Wind">
+            <div className="Wind">
               <span role="img" aria-label="dash">
                 💨
               </span>{" "}
               Wind
-            </p>
-            <p className="WindRealTime">{props.data.wind} km/h</p>
+            </div>
+            <div className="WindRealTime">{props.data.wind} km/h</div>
           </Col>
 
           <Col className="HumidityColumn">
-            <p className="Humidity">
+            <div className="Humidity">
               <span role="img" aria-label="droplet">
                 💧
               </span>{" "}
               Humidity
-            </p>
-            <p className="HumidityRealTime">{props.data.humitidy}%</p>
+            </div>
+            <div className="HumidityRealTime">{props.data.humitidy}%</div>
           </Col>
 
           <Col className="ChanceOfRainColumn">
-            <p className="ChanceOfRain">
+            <div className="ChanceOfRain">
               <span role="img" aria-label="Cloud With Rain">
                 🌧️{" "}
               </span>{" "}
               % of rain
-            </p>
-            <p className="ChanceOfRainRealTime">{props.data.rain}%</p>
+            </div>
+            <div className="ChanceOfRainRealTime">{props.data.rain}%</div>
           </Col>
         </Row>
 
         <Row className="SunriseSunset">
           <Col className="Col-6">
-            <p className="Sunrise">
+            <div className="Sunrise">
               <span role="img" aria-label="Sunrise">
                 🌅
               </span>{" "}
               Sunrise
-            </p>
-            <p className="SunriseRealTime">
+            </div>
+            <div className="SunriseRealTime">
               {SunriseTime(props.data.sunriseTime)}
-            </p>
+            </div>
           </Col>
           <Col className="Col-6">
-            <p className="Sunset">
+            <div className="Sunset">
               <span role="img" aria-label="Sunrise">
                 🌇
               </span>{" "}
               Sunset
-            </p>
-            <p className="SunsetRealTime">
+            </div>
+            <div className="SunsetRealTime">
               {SunsetTime(props.data.sunsetTime)}
-            </p>
+            </div>
           </Col>
         </Row>
       </div>

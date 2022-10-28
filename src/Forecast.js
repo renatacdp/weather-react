@@ -1,86 +1,44 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Forecast.css";
+import axios from "axios";
+import WeatherForecastDay from "./WeatherForecastDay";
 
-export default function Forecast() {
-  let Forecast = {
-    weekday: ["Wed", "Thu", "Fri", "Sat", "Sun"],
-    image: "http://openweathermap.org/img/wn/01d@2x.png",
-    currentMaxTemperature: [21, 23, 26, 29, 18],
-    currentMinTemperature: [16, 18, 21, 24, 15],
-  };
+export default function Forecast(props) {
+  let [loaded, setLoaded] = useState(false);
+  let [forecast, setForecast] = useState(null);
 
-  return (
-    <div className="Forecast">
-      <div>
-        <h4>{Forecast.weekday[0]}</h4>
-        <img src={Forecast.image} alt=" " className="ForecastWeather" />
-        <p className="MaxMinTemp">
-          ↑
-          <span className="MaxTempDay1">
-            {Forecast.currentMaxTemperature[0]}º
-          </span>
-          <br />↓
-          <span className="MinTempDay1">
-            {Forecast.currentMinTemperature[0]}º
-          </span>
-        </p>
+  useEffect(() => {
+    setLoaded(false);
+  }, [props.coordinates]);
+
+  function handleResponse(response) {
+    console.log(response.data);
+    setLoaded(true);
+    setForecast(response.data.daily);
+  }
+
+  if (loaded) {
+    return (
+      <div className="Forecast">
+        {forecast.map(function (dailyForecast, index) {
+          if (index < 5) {
+            return (
+              <div key={index}>
+                <WeatherForecastDay data={dailyForecast} />
+              </div>
+            );
+          }
+        })}
       </div>
-      <div>
-        <h4>{Forecast.weekday[1]}</h4>
-        <img src={Forecast.image} alt=" " className="ForecastWeather" />
-        <p className="MaxMinTemp">
-          ↑
-          <span className="MaxTempDay1">
-            {Forecast.currentMaxTemperature[1]}º
-          </span>
-          <br />↓
-          <span className="MinTempDay1">
-            {Forecast.currentMinTemperature[1]}º
-          </span>
-        </p>
-      </div>
-      <div>
-        <h4>{Forecast.weekday[2]}</h4>
-        <img src={Forecast.image} alt=" " className="ForecastWeather" />
-        <p className="MaxMinTemp">
-          ↑
-          <span className="MaxTempDay1">
-            {Forecast.currentMaxTemperature[2]}º
-          </span>
-          <br />↓
-          <span className="MinTempDay1">
-            {Forecast.currentMinTemperature[2]}º
-          </span>
-        </p>
-      </div>
-      <div>
-        <h4>{Forecast.weekday[3]}</h4>
-        <img src={Forecast.image} alt=" " className="ForecastWeather" />
-        <p className="MaxMinTemp">
-          ↑
-          <span className="MaxTempDay1">
-            {Forecast.currentMaxTemperature[3]}º
-          </span>
-          <br />↓
-          <span className="MinTempDay1">
-            {Forecast.currentMinTemperature[3]}º
-          </span>
-        </p>
-      </div>
-      <div>
-        <h4>{Forecast.weekday[4]}</h4>
-        <img src={Forecast.image} alt=" " className="ForecastWeather" />
-        <p className="MaxMinTemp">
-          ↑
-          <span className="MaxTempDay1">
-            {Forecast.currentMaxTemperature[4]}º
-          </span>
-          <br />↓
-          <span className="MinTempDay1">
-            {Forecast.currentMinTemperature[4]}º
-          </span>
-        </p>
-      </div>
-    </div>
-  );
+    );
+  } else {
+    let longitude = props.coordinates.lon;
+    let latitude = props.coordinates.lat;
+    let apiKey = "701f06352d61835bc4fc894e7b084629";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+
+    axios.get(apiUrl).then(handleResponse);
+
+    return null;
+  }
 }
